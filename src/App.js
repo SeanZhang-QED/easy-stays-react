@@ -3,7 +3,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Component } from 'react';
 import LoginPage from './component/LoginPage';
 
-const {Header, Content} = Layout;
+const { Header, Content } = Layout;
 const authTokenKeyInLocalStorage = "authToken";
 const asHostKeyInLocalStorage = "asHost";
 
@@ -19,7 +19,7 @@ class App extends Component {
     const authToken = localStorage.getItem(authTokenKeyInLocalStorage); // string
     const asHost = localStorage.getItem(asHostKeyInLocalStorage);       // boolean    
     this.setState({
-      authed: authToken !== null, 
+      authed: authToken !== null,
       asHost,
     })
   }
@@ -55,23 +55,26 @@ class App extends Component {
   // Holding the main logic of rendering home page
   renderContent = () => {
     if (!this.state.authed) {
-      return <LoginPage handleLoginSuccess={this.handleLoginSuccess} />;
+      return <div>default page</div>;
     }
- 
+
     if (this.state.asHost) {
       return <div>host home page</div>;
     }
- 
+
     return <div>guest home page</div>;
   };
 
-  render () {
+  render() {
     return (
       <Layout style={{ height: "100vh" }}>
         <Header style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ fontSize: 20, fontWeight: 600, color: "white" }}>
+          <div style={{ fontSize: 24, fontWeight: 700, color: "#FF385C" }}>
             Easy Stays - Easy Booking
           </div>
+          {!this.state.authed && (
+            <LoginPage handleLoginSuccess={this.handleLoginSuccess} />
+          )}
           {this.state.authed && (
             <div>
               <Dropdown trigger="click" overlay={this.userMenu}>
@@ -81,11 +84,16 @@ class App extends Component {
           )}
         </Header>
         <Content
-          style={{ height: "calc(100% - 64px)", margin: 20, overflow: "auto" }}
+          style={{
+            height: "calc(100% - 64px)",
+            margin: 0,
+            overflow: "auto",
+            backgroundColor: "white"
+          }}
         >
           {this.renderContent()}
-      </Content>
-    </Layout>
+        </Content>
+      </Layout>
     );
   }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Button, Input, Space, Divider, message, Radio } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { login, register } from "../utils"
+import Modal from 'antd/lib/modal/Modal';
 
 class LoginPage extends React.Component {
 
@@ -9,7 +10,19 @@ class LoginPage extends React.Component {
 
     state = {
         asHost: false,
-        loading: false
+        loading: false,
+        displayModal: false,
+    }
+
+    handleBtnOnClick = () => {
+        this.setState({
+            displayModal: true
+        })
+    }
+    handleBtnOnCancle = () => {
+        this.setState({
+            displayModal: false
+        })
     }
 
     handleSwitchOnChange = (e) => {
@@ -17,12 +30,12 @@ class LoginPage extends React.Component {
             asHost: !e.target.checked,
         });
     };
-    
+
     handleRadioOnChange = (e) => {
         // console.log('radio checked', e.target.value);
         this.setState({
             asHost: e.target.value === "host",
-        }); 
+        });
     };
 
     handleLogin = async () => {
@@ -83,60 +96,76 @@ class LoginPage extends React.Component {
 
     render() {
         return (
-            <div style={{ width: 400, margin: "100px auto" }}>
-                <Divider><span style={{ fontSize: 26, fontWeight: 600, color: "#FF385C" }}>
-                    WELCOME
-                </span></Divider>
-                <Form ref={this.formRef}>
-                    <Form.Item
-                        name="username"
-                        rules={[{ required: true, message: "Please input your Username!", },]}
-                    >
-                        <Input
-                            disabled={this.state.loading}
-                            suffix={<UserOutlined className="site-form-item-icon" />}
-                            placeholder="Username"
-                        />
-                    </Form.Item>
-                    <Form.Item
-                        name="password"
-                        rules={[{ required: true, message: "Please input your Password!", },]}
-                    >
-                        <Input.Password
-                            disabled={this.state.loading}
-                            placeholder="Password"
-                        />
-                    </Form.Item>
-                </Form>
-                <Space direction="vertical" size={36}>
-                    <Radio.Group 
-                        defaultValue={"guest"}
-                        disabled={this.state.loading}
-                        onChange={this.handleRadioOnChange}
-                        style={{display: "flex", justifyContent:"center"}}
-                    >
-                        <Radio value={"guest"}>Guest</Radio>
-                        <Radio value={"host"}>Host</Radio>
-                    </Radio.Group>
-                    <Space size={240}>
-                        <Button
-                            onClick={this.handleLogin}
-                            disabled={this.state.loading}
-                            shape="round"
-                            type="primary"
+            <div>
+                <Button
+                    type='primary'
+                    onClick={this.handleBtnOnClick}
+                >
+                    <b>Login</b>
+                </Button>
+                <Modal
+                    visible={this.state.displayModal}
+                    onCancel={this.handleBtnOnCancle}
+                    footer={null}
+                >
+                    <div className='divider-wrapper'>
+                        <Divider><span style={{
+                            fontSize: 26, fontWeight: 600, color: "#FF385C"
+                        }}>
+                            WELCOME
+                        </span></Divider>
+                    </div>
+                    <Form ref={this.formRef}>
+                        <Form.Item
+                            name="username"
+                            rules={[{ required: true, message: "Please input your Username!", },]}
                         >
-                            Log in
-                        </Button>
-                        <Button
-                            onClick={this.handleRegister}
-                            disabled={this.state.loading}
-                            shape="round"
-                            type="primary"
+                            <Input
+                                disabled={this.state.loading}
+                                suffix={<UserOutlined className="site-form-item-icon" />}
+                                placeholder="Username"
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="password"
+                            rules={[{ required: true, message: "Please input your Password!", },]}
                         >
-                            Register
-                        </Button>
+                            <Input.Password
+                                disabled={this.state.loading}
+                                placeholder="Password"
+                            />
+                        </Form.Item>
+                    </Form>
+                    <Space direction="vertical" size={30}>
+                        <Radio.Group
+                            defaultValue={"guest"}
+                            disabled={this.state.loading}
+                            onChange={this.handleRadioOnChange}
+                            style={{ display: "flex", justifyContent: "center" }}
+                        >
+                            <Radio value={"guest"}>Guest</Radio>
+                            <Radio value={"host"}>Host</Radio>
+                        </Radio.Group>
+                        <Space size={140}>
+                            <Button
+                                onClick={this.handleLogin}
+                                disabled={this.state.loading}
+                                shape="round"
+                                type="primary"
+                            >
+                                Log in
+                            </Button>
+                            <Button
+                                onClick={this.handleRegister}
+                                disabled={this.state.loading}
+                                shape="round"
+                                type="primary"
+                            >
+                                Register
+                            </Button>
+                        </Space>
                     </Space>
-                </Space>
+                </Modal>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 @import '~antd/dist/antd.css';
 
 .ant-layout-header {
-  background: #FF385C;
+  background: white;
 }
 
 .ant-btn:hover,
@@ -12,14 +12,28 @@
 }
 
 .ant-btn:active {
-  color: #D70466 ;
-  border-color:  #D70466;
+  color: #D70466;
+  border-color: #D70466;
   background: #fff;
 }
 
 .ant-btn-primary {
   border-color: #FF385C;
   background: #FF385C;
+}
+
+.ant-modal-content {
+  width: 350px;
+  height: 400px;
+}
+
+.divider-wrapper {
+  height: 75px;
+}
+
+.ant-form-item {
+  margin-top: 16px;
+  margin-bottom: 32px;
 }
 
 .ant-input-affix-wrapper {
@@ -38,7 +52,7 @@
 
 .ant-radio-wrapper:hover .ant-radio,
 .ant-radio:hover .ant-radio-inner,
-.ant-radio-input:focus + .ant-radio-inner {
+.ant-radio-input:focus+.ant-radio-inner {
   border-color: #FF385C;
 }
 
