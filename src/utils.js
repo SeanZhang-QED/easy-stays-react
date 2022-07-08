@@ -1,4 +1,4 @@
-// const domain = "the url you deployed your backend to";
+const domain = "";
  
 export const login = (credential, asHost) => {
   const loginUrl = `${domain}/authenticate/${asHost ? "host" : "guest"}`;
@@ -18,7 +18,7 @@ export const login = (credential, asHost) => {
 };
  
 export const register = (credential, asHost) => {
-  const registerUrl = `${domain}/register/${asHost ? "host" : "guest"}`;
+  const registerUrl = `${domain}/signup/${asHost ? "host" : "guest"}`;
   return fetch(registerUrl, {
     method: "POST",
     headers: {

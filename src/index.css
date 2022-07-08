@@ -1,15 +1,47 @@
 @import '~antd/dist/antd.css';
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.ant-layout-header {
+  background: #FF385C;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.ant-btn:hover,
+.ant-btn:focus {
+  color: #FF385C;
+  border-color: #FF385C;
+  background: #fff;
+}
+
+.ant-btn:active {
+  color: #D70466 ;
+  border-color:  #D70466;
+  background: #fff;
+}
+
+.ant-btn-primary {
+  border-color: #FF385C;
+  background: #FF385C;
+}
+
+.ant-input-affix-wrapper {
+  border-radius: 4px;
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: #FF385C;
+  box-shadow: 0 0 0 1px rgba(169, 1, 54, 0.5);
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: #FF385C;
+}
+
+.ant-radio-wrapper:hover .ant-radio,
+.ant-radio:hover .ant-radio-inner,
+.ant-radio-input:focus + .ant-radio-inner {
+  border-color: #FF385C;
+}
+
+.ant-radio-inner::after {
+  background-color: #FF385C;
 }
