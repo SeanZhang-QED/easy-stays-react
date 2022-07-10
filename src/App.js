@@ -2,6 +2,7 @@ import { Layout, Button, Dropdown, Menu } from 'antd';
 import { UserOutlined } from "@ant-design/icons";
 import { Component } from 'react';
 import LoginPage from './component/LoginPage';
+import HostHomePage from './component/HostHomePage';
 
 const { Header, Content } = Layout;
 const authTokenKeyInLocalStorage = "authToken";
@@ -59,7 +60,7 @@ class App extends Component {
     }
 
     if (this.state.asHost) {
-      return <div>host home page</div>;
+      return <HostHomePage />;
     }
 
     return <div>guest home page</div>;
@@ -86,7 +87,7 @@ class App extends Component {
         <Content
           style={{
             height: "calc(100% - 64px)",
-            margin: 0,
+            margin:0,
             overflow: "auto",
             backgroundColor: "white"
           }}

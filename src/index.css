@@ -18,6 +18,7 @@
 }
 
 .ant-btn-primary {
+  border-radius: 5px;
   border-color: #FF385C;
   background: #FF385C;
 }
@@ -58,4 +59,46 @@
 
 .ant-radio-inner::after {
   background-color: #FF385C;
+}
+
+/* .ant-tabs > .ant-tabs-nav .ant-tabs-nav-add:hover,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-add:hover {
+  color: #fd637f;
+}
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-add:active,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-add:active,
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-add:focus,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-add:focus {
+  color: #FF385C;
+} */
+
+.ant-tabs-tab:hover {
+  color: #fd637f;
+}
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #FF385C;
+  font-weight: 600;
+  text-shadow: 0 0 0.25px currentcolor;
+}
+
+.ant-tabs-ink-bar {
+  background: #FF385C;
+}
+
+.ant-tabs-content-holder {
+  width: calc(100% - 40px);
+}
+
+.ant-tabs-content {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next,
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover {
+  font-size: inherit;
+  color: currentColor;
 }
