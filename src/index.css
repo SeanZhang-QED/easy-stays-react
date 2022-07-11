@@ -23,9 +23,18 @@
   background: #FF385C;
 }
 
+.ant-modal {
+  width: fit-content !important;
+}
+
 .ant-modal-content {
   width: 350px;
   height: 400px;
+}
+
+.info-modal .ant-modal-content {
+  width: 400px;
+  height: 300px;
 }
 
 .divider-wrapper {
@@ -61,16 +70,6 @@
   background-color: #FF385C;
 }
 
-/* .ant-tabs > .ant-tabs-nav .ant-tabs-nav-add:hover,
-.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-add:hover {
-  color: #fd637f;
-}
-.ant-tabs > .ant-tabs-nav .ant-tabs-nav-add:active,
-.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-add:active,
-.ant-tabs > .ant-tabs-nav .ant-tabs-nav-add:focus,
-.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-add:focus {
-  color: #FF385C;
-} */
 
 .ant-tabs-tab:hover {
   color: #fd637f;

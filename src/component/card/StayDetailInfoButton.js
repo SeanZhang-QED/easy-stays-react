@@ -2,7 +2,7 @@ import { React, Component } from 'react'
 import { Button, Tooltip, Space, Modal, } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import Text from "antd/lib/typography/Text";
-import { } from "../utils";
+import { } from "../../utils";
 
 export default class StayDetailInfoButton extends Component {
     state = {
@@ -37,12 +37,14 @@ export default class StayDetailInfoButton extends Component {
                 </Tooltip>
                 {modalVisible && (
                     <Modal
+                        wrapClassName="info-modal"
                         title={name}
                         centered={true}
                         visible={modalVisible}
                         closable={false}
                         footer={null}
                         onCancel={this.handleCancel}
+                        style={{width:"400px"}}
                     >
                         <Space direction="vertical">
                             <Text strong={true}>Description</Text>

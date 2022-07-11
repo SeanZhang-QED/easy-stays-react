@@ -1,58 +1,9 @@
 import React, { Component } from 'react'
-import { message, Tabs, List, Card, Image, Carousel, Button, Popconfirm } from "antd";
-import { LeftCircleFilled, RightCircleFilled, DeleteOutlined } from "@ant-design/icons";
-import Text from "antd/lib/typography/Text";
-import StayDetailInfoButton from './StayDetailInfoButton';
-import { getStaysByHost, deleteStay } from "../utils"
-
+import { message, Tabs, List } from "antd";
+import { getStaysByHost } from "../utils"
+import StayCard from './card/StayCard';
 
 const { TabPane } = Tabs;
-// const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-// const CustomSpinner = () => <Spin indicator={antIcon}/> 
-
-class RemoveStayButton extends Component {
-    state = {
-        loading: false,
-    };
-
-    handleRemoveStay = async () => {
-        const { stay, onRemoveSuccess } = this.props;
-        this.setState({
-            loading: true,
-        });
-
-        try {
-            await deleteStay(stay.id);
-            onRemoveSuccess();
-        } catch (error) {
-            message.error(error.message);
-        } finally {
-            this.setState({
-                loading: false,
-            });
-        }
-    };
-
-    render() {
-        return (
-            <Popconfirm
-                title="Are you sure to delete this stay?"
-                onConfirm={this.handleRemoveStay}
-                okText="Yes"
-                cancelText="No"
-            >
-                <Button
-                    danger={true}
-                    disabled={this.state.loading}
-                    shape="circle"
-                    icon={<DeleteOutlined />}
-                    type="primary"
-                >
-                </Button>
-            </Popconfirm>
-        );
-    }
-}
 
 class MyStays extends Component {
     state = {
@@ -94,36 +45,7 @@ class MyStays extends Component {
                 dataSource={this.state.data}
                 renderItem={(item) => (
                     <List.Item>
-                        <Card
-                            key={item.id}
-                            title={
-                                <div style={{ display: "flex", alignItems: "center" }}>
-                                    <Text ellipsis={true} style={{ maxWidth: 150 }}>
-                                        {item.name}
-                                    </Text>
-                                    <StayDetailInfoButton stay={item} />
-                                </div>
-                            }
-                            actions={[]}
-                            hoverable
-                            extra={<RemoveStayButton stay={item} onRemoveSuccess={this.loadData} />}
-                            style={{ width: "300px", height: "300px", margin:'auto' }}
-                        >
-                            {
-                                <Carousel
-                                    dots={false}
-                                    arrows={true}
-                                    prevArrow={<LeftCircleFilled />}
-                                    nextArrow={<RightCircleFilled />}
-                                >
-                                    {item.images.map((image, index) => (
-                                        <div key={index}>
-                                            <Image src={image.url} width="250px" height="170px" />
-                                        </div>
-                                    ))}
-                                </Carousel>
-                            }
-                        </Card>
+                        <StayCard item={item} loadData={this.loadData} />
                     </List.Item>
                 )}
             />
