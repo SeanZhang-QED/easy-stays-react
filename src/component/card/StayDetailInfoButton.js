@@ -44,7 +44,6 @@ export default class StayDetailInfoButton extends Component {
                         closable={false}
                         footer={null}
                         onCancel={this.handleCancel}
-                        style={{width:"400px"}}
                     >
                         <Space direction="vertical">
                             <Text strong={true}>Description</Text>

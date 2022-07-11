@@ -4,6 +4,7 @@ import { LeftCircleFilled, RightCircleFilled} from "@ant-design/icons";
 import Text from "antd/lib/typography/Text";
 import StayDetailInfoButton from './StayDetailInfoButton';
 import StayRemoveButton from './StayRemoveButton';
+import ViewReservationsButton from './ViewReservationsButton ';
 
 
 function StayCard(props) {
@@ -19,8 +20,7 @@ function StayCard(props) {
                     <StayDetailInfoButton stay={item} />
                 </div>
             }
-            actions={[]}
-            hoverable
+            actions={[<ViewReservationsButton stay={item}/>]}
             extra={<StayRemoveButton stay={item} onRemoveSuccess={loadData} />}
             style={{ width: "300px", height: "300px", margin: 'auto' }}
         >

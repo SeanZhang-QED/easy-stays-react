@@ -27,7 +27,7 @@
   width: fit-content !important;
 }
 
-.ant-modal-content {
+.login-modal .ant-modal-content {
   width: 350px;
   height: 400px;
 }
@@ -41,22 +41,22 @@
   height: 75px;
 }
 
-.ant-form-item {
+.login-modal .ant-form-item {
   margin-top: 16px;
   margin-bottom: 32px;
 }
 
-.ant-input-affix-wrapper {
+.login-modal .ant-input-affix-wrapper {
   border-radius: 4px;
 }
 
-.ant-input-affix-wrapper:focus,
-.ant-input-affix-wrapper-focused {
+.login-modal .ant-input-affix-wrapper:focus,
+.login-modal .ant-input-affix-wrapper-focused {
   border-color: #FF385C;
   box-shadow: 0 0 0 1px rgba(169, 1, 54, 0.5);
 }
 
-.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+.login-modal .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
   border-color: #FF385C;
 }
 
@@ -69,7 +69,6 @@
 .ant-radio-inner::after {
   background-color: #FF385C;
 }
-
 
 .ant-tabs-tab:hover {
   color: #fd637f;

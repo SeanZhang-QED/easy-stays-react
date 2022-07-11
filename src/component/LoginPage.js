@@ -104,6 +104,7 @@ class LoginPage extends React.Component {
                     <b>Login</b>
                 </Button>
                 <Modal
+                    wrapClassName="login-modal"
                     visible={this.state.displayModal}
                     onCancel={this.handleBtnOnCancle}
                     footer={null}
