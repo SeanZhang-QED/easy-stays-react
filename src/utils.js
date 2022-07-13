@@ -1,7 +1,7 @@
-const domain = "";
+import {DOMAIN} from "./constants";
  
 export const login = (credential, asHost) => {
-  const loginUrl = `${domain}/authenticate/${asHost ? "host" : "guest"}`;
+  const loginUrl = `${DOMAIN}/authenticate/${asHost ? "host" : "guest"}`;
   return fetch(loginUrl, {
     method: "POST",
     headers: {
@@ -18,7 +18,7 @@ export const login = (credential, asHost) => {
 };
  
 export const register = (credential, asHost) => {
-  const registerUrl = `${domain}/signup/${asHost ? "host" : "guest"}`;
+  const registerUrl = `${DOMAIN}/signup/${asHost ? "host" : "guest"}`;
   return fetch(registerUrl, {
     method: "POST",
     headers: {
@@ -34,7 +34,7 @@ export const register = (credential, asHost) => {
  
 export const getReservations = () => {
   const authToken = localStorage.getItem("authToken");
-  const listReservationsUrl = `${domain}/reservations`;
+  const listReservationsUrl = `${DOMAIN}/reservations`;
  
   return fetch(listReservationsUrl, {
     headers: {
@@ -51,7 +51,7 @@ export const getReservations = () => {
  
 export const getStaysByHost = () => {
   const authToken = localStorage.getItem("authToken");
-  const listStaysUrl = `${domain}/stays/`;
+  const listStaysUrl = `${DOMAIN}/stays/`;
  
   return fetch(listStaysUrl, {
     headers: {
@@ -66,9 +66,9 @@ export const getStaysByHost = () => {
   });
 };
  
-export const searchStays = (query) => {
+export const searchStays = (query, lat, lng) => {
   const authToken = localStorage.getItem("authToken");
-  const searchStaysUrl = new URL(`${domain}/search/`);
+  const searchStaysUrl = new URL(`${DOMAIN}/search/`);
   searchStaysUrl.searchParams.append("guest_number", query.guest_number);
   searchStaysUrl.searchParams.append(
     "checkin_date",
@@ -78,8 +78,8 @@ export const searchStays = (query) => {
     "checkout_date",
     query.checkout_date.format("YYYY-MM-DD")
   );
-  searchStaysUrl.searchParams.append("lat", 37);
-  searchStaysUrl.searchParams.append("lon", -122);
+  searchStaysUrl.searchParams.append("lat", lat);
+  searchStaysUrl.searchParams.append("lon", lng);
  
   return fetch(searchStaysUrl, {
     headers: {
@@ -96,7 +96,7 @@ export const searchStays = (query) => {
  
 export const deleteStay = (stayId) => {
   const authToken = localStorage.getItem("authToken");
-  const deleteStayUrl = `${domain}/stays/${stayId}`;
+  const deleteStayUrl = `${DOMAIN}/stays/${stayId}`;
  
   return fetch(deleteStayUrl, {
     method: "DELETE",
@@ -112,7 +112,7 @@ export const deleteStay = (stayId) => {
  
 export const bookStay = (data) => {
   const authToken = localStorage.getItem("authToken");
-  const bookStayUrl = `${domain}/reservations`;
+  const bookStayUrl = `${DOMAIN}/reservations`;
  
   return fetch(bookStayUrl, {
     method: "POST",
@@ -130,7 +130,7 @@ export const bookStay = (data) => {
  
 export const cancelReservation = (reservationId) => {
   const authToken = localStorage.getItem("authToken");
-  const cancelReservationUrl = `${domain}/reservations/${reservationId}`;
+  const cancelReservationUrl = `${DOMAIN}/reservations/${reservationId}`;
  
   return fetch(cancelReservationUrl, {
     method: "DELETE",
@@ -146,7 +146,7 @@ export const cancelReservation = (reservationId) => {
  
 export const getReservationsByStay = (stayId) => {
   const authToken = localStorage.getItem("authToken");
-  const getReservationByStayUrl = `${domain}/stays/reservations/${stayId}`;
+  const getReservationByStayUrl = `${DOMAIN}/stays/reservations/${stayId}`;
  
   return fetch(getReservationByStayUrl, {
     headers: {
@@ -163,7 +163,7 @@ export const getReservationsByStay = (stayId) => {
  
 export const uploadStay = (data) => {
   const authToken = localStorage.getItem("authToken");
-  const uploadStayUrl = `${domain}/stays`;
+  const uploadStayUrl = `${DOMAIN}/stays`;
  
   return fetch(uploadStayUrl, {
     method: "POST",

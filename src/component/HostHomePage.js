@@ -5,6 +5,10 @@ import StayCard from './StayCard';
 import FormItem from 'antd/lib/form/FormItem';
 
 const { TabPane } = Tabs;
+const layout = {
+    layout: 'vertical',
+    wrapperCol: { span: 16 },
+};
 
 class MyStays extends Component {
     state = {
@@ -54,12 +58,6 @@ class MyStays extends Component {
     }
 
 }
-
-const layout = {
-    layout: 'vertical',
-    wrapperCol: { span: 16 },
-};
-
 
 class UploadStay extends Component {
     state = {

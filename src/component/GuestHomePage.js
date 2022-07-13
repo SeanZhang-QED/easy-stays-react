@@ -4,6 +4,8 @@ import { getReservations, searchStays } from '../utils';
 import CancelReservationButton from './buttons/CancleReservationButton';
 import axios from 'axios';
 import StayCard from './StayCard';
+import Geocode from "react-geocode";
+import { GEO_API_KEY } from '../constants';
 
 const { Text } = Typography;
 const { TabPane } = Tabs;
@@ -21,21 +23,29 @@ class SearchStays extends React.Component {
         });
 
         try {
-            // const resp = await searchStays(query);
+            Geocode.setApiKey(GEO_API_KEY);
+            const resp = await Geocode.fromAddress(query.location);
+            var { lat, lng } = resp.results[0].geometry.location;
+        } catch(error) {
+            message.error(error.message);
+        }
+
+        try {
+            // const resp = await searchStays(query, lat, lng);
+            // console.log(lat, lng);
             const resp = await axios.get('/search/',
                 {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem("authToken")}`
                     },
                     params: {
-                        lat: 37,
-                        lon: -122,
+                        lat: lat,
+                        lon: lng,
                         checkin_date: query.date_range[0].format("YYYY-MM-DD"),
                         checkout_date: query.date_range[1].format("YYYY-MM-DD"),
                         guest_number: query.guest_number
                     }
                 });
-            console.log(resp);
             this.setState({
                 data: resp.data,
                 // data: resp,
