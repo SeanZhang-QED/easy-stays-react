@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { message, Tabs, List, Form, Input, InputNumber, Button } from "antd";
 import { getStaysByHost, uploadStay } from "../utils"
-import StayCard from './card/StayCard';
+import StayCard from './StayCard';
 import FormItem from 'antd/lib/form/FormItem';
 
 const { TabPane } = Tabs;

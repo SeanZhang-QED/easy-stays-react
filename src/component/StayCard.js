@@ -1,14 +1,14 @@
 import React from 'react';
-import { Card, Image, Carousel} from "antd";
-import { LeftCircleFilled, RightCircleFilled} from "@ant-design/icons";
+import { Card, Image, Carousel } from "antd";
+import { LeftCircleFilled, RightCircleFilled } from "@ant-design/icons";
 import Text from "antd/lib/typography/Text";
-import StayDetailInfoButton from './StayDetailInfoButton';
-import StayRemoveButton from './StayRemoveButton';
-import ViewReservationsButton from './ViewReservationsButton ';
-
+import StayDetailInfoButton from './buttons/StayDetailInfoButton';
+import StayRemoveButton from './buttons/StayRemoveButton';
+import ViewReservationsButton from './buttons/ViewReservationsButton ';
+import BookStayButton from './buttons/BookStayButton';
 
 function StayCard(props) {
-    const { item, loadData } = props;
+    const { item, loadData, isGuest } = props;
     return (
         <Card
             key={item.id}
@@ -20,8 +20,12 @@ function StayCard(props) {
                     <StayDetailInfoButton stay={item} />
                 </div>
             }
-            actions={[<ViewReservationsButton stay={item}/>]}
-            extra={<StayRemoveButton stay={item} onRemoveSuccess={loadData} />}
+            actions={[!isGuest && <ViewReservationsButton stay={item} />]}
+            extra={
+                !isGuest
+                    ? <StayRemoveButton stay={item} onRemoveSuccess={loadData} />
+                    : <BookStayButton stay={item} />
+            }
             style={{ width: "300px", height: "300px", margin: 'auto' }}
         >
             {

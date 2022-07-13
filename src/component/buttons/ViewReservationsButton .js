@@ -9,19 +9,18 @@ function ReservationList(props) {
     const [reservations, setReservations] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
-            setLoading(true);
-            try {
-                const data = await getReservationsByStay(stayId);
+        setLoading(true);
+        getReservationsByStay(stayId)
+            .then((data) => {
                 setReservations(data);
-            } catch (error) {
+            })
+            .catch((error) => {
                 message.error(error.message);
-            } finally {
+            })
+            .finally(() => {
                 setLoading(false);
-            }
-        }
-        fetchData();
-    })
+            });
+    }, [stayId])
 
     return (
         <List

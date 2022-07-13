@@ -3,6 +3,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Component } from 'react';
 import LoginPage from './component/LoginPage';
 import HostHomePage from './component/HostHomePage';
+import GuestHomePage from './component/GuestHomePage';
 
 const { Header, Content } = Layout;
 const authTokenKeyInLocalStorage = "authToken";
@@ -18,7 +19,7 @@ class App extends Component {
   // => setState => step into updating phase => triger re-render
   componentDidMount() {
     const authToken = localStorage.getItem(authTokenKeyInLocalStorage); // string
-    const asHost = localStorage.getItem(asHostKeyInLocalStorage);       // boolean    
+    const asHost = localStorage.getItem(asHostKeyInLocalStorage) === "true";       // boolean    
     this.setState({
       authed: authToken !== null,
       asHost,
@@ -63,7 +64,7 @@ class App extends Component {
       return <HostHomePage />;
     }
 
-    return <div>guest home page</div>;
+    return <GuestHomePage />;
   };
 
   render() {
