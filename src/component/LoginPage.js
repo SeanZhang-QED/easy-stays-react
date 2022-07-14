@@ -25,12 +25,6 @@ class LoginPage extends React.Component {
         })
     }
 
-    handleSwitchOnChange = (e) => {
-        this.setState({
-            asHost: !e.target.checked,
-        });
-    };
-
     handleRadioOnChange = (e) => {
         // console.log('radio checked', e.target.value);
         this.setState({
@@ -98,10 +92,10 @@ class LoginPage extends React.Component {
         return (
             <div>
                 <Button
+                    icon={<UserOutlined />}
                     type='primary'
                     onClick={this.handleBtnOnClick}
                 >
-                    <b>Login</b>
                 </Button>
                 <Modal
                     wrapClassName="login-modal"

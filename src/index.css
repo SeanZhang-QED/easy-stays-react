@@ -37,8 +37,23 @@
   height: 300px;
 }
 
+.login-page {
+  z-index: 1;
+  height: 440px;
+  margin: auto;
+  width: 80%;
+  max-width: 400px;
+  min-width: 325px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 20%);
+}
+
 .divider-wrapper {
-  height: 75px;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px ;
+  margin-bottom: 30px;
 }
 
 .login-modal .ant-form-item {
@@ -51,13 +66,20 @@
 }
 
 .login-modal .ant-input-affix-wrapper:focus,
-.login-modal .ant-input-affix-wrapper-focused {
+.login-modal .ant-input-affix-wrapper-focused,
+.login-page .ant-input-affix-wrapper:focus,
+.login-page .ant-input-affix-wrapper-focused {
   border-color: #FF385C;
   box-shadow: 0 0 0 1px rgba(169, 1, 54, 0.5);
 }
 
-.login-modal .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+.login-modal .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
+.login-page .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
   border-color: #FF385C;
+}
+
+.login-page .ant-space.ant-space-vertical {
+  width: 100%;
 }
 
 .ant-radio-wrapper:hover .ant-radio,

@@ -1,9 +1,10 @@
 import { Layout, Button, Dropdown, Menu } from 'antd';
-import { UserOutlined } from "@ant-design/icons";
+import { LogoutOutlined } from "@ant-design/icons";
 import { Component } from 'react';
 import LoginPage from './component/LoginPage';
 import HostHomePage from './component/HostHomePage';
 import GuestHomePage from './component/GuestHomePage';
+import DefaultHomePage from './component/DefaultHomePage';
 
 const { Header, Content } = Layout;
 const authTokenKeyInLocalStorage = "authToken";
@@ -57,7 +58,7 @@ class App extends Component {
   // Holding the main logic of rendering home page
   renderContent = () => {
     if (!this.state.authed) {
-      return <div>default page</div>;
+      return <DefaultHomePage handleLoginSuccess={this.handleLoginSuccess} />;
     }
 
     if (this.state.asHost) {
@@ -80,7 +81,7 @@ class App extends Component {
           {this.state.authed && (
             <div>
               <Dropdown trigger="click" overlay={this.userMenu}>
-                <Button icon={<UserOutlined />} shape="circle" />
+                <Button icon={<LogoutOutlined />} shape="circle" />
               </Dropdown>
             </div>
           )}
@@ -88,7 +89,7 @@ class App extends Component {
         <Content
           style={{
             height: "calc(100% - 64px)",
-            margin:0,
+            margin: 0,
             overflow: "auto",
             backgroundColor: "white"
           }}
