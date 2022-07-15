@@ -41,8 +41,8 @@
   z-index: 1;
   height: 440px;
   margin: auto;
-  width: 80%;
-  max-width: 400px;
+  width: 100%;
+  /* max-width: 400px; */
   min-width: 325px;
   background-color: white;
   border-radius: 8px;
@@ -50,7 +50,7 @@
 }
 
 .divider-wrapper {
-  width: 80%;
+  width: 75%;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 30px;
