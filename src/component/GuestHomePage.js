@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Tabs, List, Typography, message, Form, InputNumber, DatePicker, Button, Input } from 'antd';
 import { getReservations, searchStays } from '../utils';
 import CancelReservationButton from './buttons/CancleReservationButton';
-import axios from 'axios';
 import StayCard from './StayCard';
 import Geocode from "react-geocode";
 import { GEO_API_KEY } from '../constants';
@@ -26,29 +25,15 @@ class SearchStays extends React.Component {
             Geocode.setApiKey(GEO_API_KEY);
             const resp = await Geocode.fromAddress(query.location);
             var { lat, lng } = resp.results[0].geometry.location;
-        } catch(error) {
+        } catch (error) {
             message.error(error.message);
         }
 
         try {
-            // const resp = await searchStays(query, lat, lng);
             // console.log(lat, lng);
-            const resp = await axios.get('/search/',
-                {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem("authToken")}`
-                    },
-                    params: {
-                        lat: lat,
-                        lon: lng,
-                        checkin_date: query.date_range[0].format("YYYY-MM-DD"),
-                        checkout_date: query.date_range[1].format("YYYY-MM-DD"),
-                        guest_number: query.guest_number
-                    }
-                });
+            const resp = await searchStays(query, lat, lng);
             this.setState({
-                data: resp.data,
-                // data: resp,
+                data: resp,
             });
         } catch (error) {
             message.error(error.message);
@@ -69,7 +54,7 @@ class SearchStays extends React.Component {
                             name="location"
                             rules={[{ required: true }]}
                         >
-                            <Input placeholder="United States"/>
+                            <Input placeholder="United States" />
                         </Form.Item>
                         <Form.Item
                             label="Select Dates"
@@ -101,12 +86,12 @@ class SearchStays extends React.Component {
                         style={{ marginTop: 20 }}
                         loading={this.state.loading}
                         grid={{
-                            gutter: 16,
+                            gutter: 8,
                             xs: 1,
-                            sm: 3,
-                            md: 3,
-                            lg: 3,
-                            xl: 4,
+                            sm: 1,
+                            md: 2,
+                            lg: 2,
+                            xl: 3,
                             xxl: 4,
                         }}
                         dataSource={this.state.data}

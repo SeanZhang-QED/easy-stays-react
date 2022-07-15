@@ -1,5 +1,5 @@
-import {DOMAIN} from "./constants";
- 
+import { DOMAIN } from "./constants";
+
 export const login = (credential, asHost) => {
   const loginUrl = `${DOMAIN}/authenticate/${asHost ? "host" : "guest"}`;
   return fetch(loginUrl, {
@@ -12,11 +12,11 @@ export const login = (credential, asHost) => {
     if (response.status !== 200) {
       throw Error("Fail to log in");
     }
- 
+
     return response.json();
   });
 };
- 
+
 export const register = (credential, asHost) => {
   const registerUrl = `${DOMAIN}/signup/${asHost ? "host" : "guest"}`;
   return fetch(registerUrl, {
@@ -31,11 +31,11 @@ export const register = (credential, asHost) => {
     }
   });
 };
- 
+
 export const getReservations = () => {
   const authToken = localStorage.getItem("authToken");
   const listReservationsUrl = `${DOMAIN}/reservations`;
- 
+
   return fetch(listReservationsUrl, {
     headers: {
       Authorization: `Bearer ${authToken}`,
@@ -44,15 +44,15 @@ export const getReservations = () => {
     if (response.status !== 200) {
       throw Error("Fail to get reservation list");
     }
- 
+
     return response.json();
   });
 };
- 
+
 export const getStaysByHost = () => {
   const authToken = localStorage.getItem("authToken");
   const listStaysUrl = `${DOMAIN}/stays/`;
- 
+
   return fetch(listStaysUrl, {
     headers: {
       Authorization: `Bearer ${authToken}`,
@@ -61,26 +61,26 @@ export const getStaysByHost = () => {
     if (response.status !== 200) {
       throw Error("Fail to get stay list");
     }
- 
+
     return response.json();
   });
 };
- 
+
 export const searchStays = (query, lat, lng) => {
   const authToken = localStorage.getItem("authToken");
   const searchStaysUrl = new URL(`${DOMAIN}/search/`);
   searchStaysUrl.searchParams.append("guest_number", query.guest_number);
   searchStaysUrl.searchParams.append(
     "checkin_date",
-    query.checkin_date.format("YYYY-MM-DD")
+    query.date_range[0].format("YYYY-MM-DD")
   );
   searchStaysUrl.searchParams.append(
     "checkout_date",
-    query.checkout_date.format("YYYY-MM-DD")
+    query.date_range[1].format("YYYY-MM-DD")
   );
   searchStaysUrl.searchParams.append("lat", lat);
   searchStaysUrl.searchParams.append("lon", lng);
- 
+
   return fetch(searchStaysUrl, {
     headers: {
       Authorization: `Bearer ${authToken}`,
@@ -89,15 +89,15 @@ export const searchStays = (query, lat, lng) => {
     if (response.status !== 200) {
       throw Error("Fail to search stays");
     }
- 
+
     return response.json();
   });
 };
- 
+
 export const deleteStay = (stayId) => {
   const authToken = localStorage.getItem("authToken");
   const deleteStayUrl = `${DOMAIN}/stays/${stayId}`;
- 
+
   return fetch(deleteStayUrl, {
     method: "DELETE",
     headers: {
@@ -109,11 +109,11 @@ export const deleteStay = (stayId) => {
     }
   });
 };
- 
+
 export const bookStay = (data) => {
   const authToken = localStorage.getItem("authToken");
   const bookStayUrl = `${DOMAIN}/reservations`;
- 
+
   return fetch(bookStayUrl, {
     method: "POST",
     headers: {
@@ -127,11 +127,11 @@ export const bookStay = (data) => {
     }
   });
 };
- 
+
 export const cancelReservation = (reservationId) => {
   const authToken = localStorage.getItem("authToken");
   const cancelReservationUrl = `${DOMAIN}/reservations/${reservationId}`;
- 
+
   return fetch(cancelReservationUrl, {
     method: "DELETE",
     headers: {
@@ -143,11 +143,11 @@ export const cancelReservation = (reservationId) => {
     }
   });
 };
- 
+
 export const getReservationsByStay = (stayId) => {
   const authToken = localStorage.getItem("authToken");
   const getReservationByStayUrl = `${DOMAIN}/stays/reservations/${stayId}`;
- 
+
   return fetch(getReservationByStayUrl, {
     headers: {
       Authorization: `Bearer ${authToken}`,
@@ -156,15 +156,15 @@ export const getReservationsByStay = (stayId) => {
     if (response.status !== 200) {
       throw Error("Fail to get reservations by stay");
     }
- 
+
     return response.json();
   });
 };
- 
+
 export const uploadStay = (data) => {
   const authToken = localStorage.getItem("authToken");
   const uploadStayUrl = `${DOMAIN}/stays`;
- 
+
   return fetch(uploadStayUrl, {
     method: "POST",
     headers: {

@@ -52,7 +52,7 @@
 .divider-wrapper {
   width: 80%;
   margin: auto;
-  margin-top: 20px ;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 
@@ -95,6 +95,7 @@
 .ant-tabs-tab:hover {
   color: #fd637f;
 }
+
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #FF385C;
   font-weight: 600;
@@ -114,6 +115,13 @@
   margin-right: 10px;
 }
 
+.ant-card-body {
+  padding: 0;
+}
+
+.ant-btn-circle.ant-btn-primary {
+  border-radius: 50%;
+}
 
 .ant-carousel .slick-prev,
 .ant-carousel .slick-next,

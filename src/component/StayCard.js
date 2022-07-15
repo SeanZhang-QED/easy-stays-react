@@ -20,13 +20,14 @@ function StayCard(props) {
                     <StayDetailInfoButton stay={item} />
                 </div>
             }
-            actions={[!isGuest && <ViewReservationsButton stay={item} />]}
+            actions={[!isGuest && <ViewReservationsButton stay={item} key='view-reservation' />]}
             extra={
                 !isGuest
                     ? <StayRemoveButton stay={item} onRemoveSuccess={loadData} />
                     : <BookStayButton stay={item} />
             }
-            style={{ width: "300px", height: "300px", margin: 'auto' }}
+            style={{ width: "330px", height: "360px", margin: 'auto' }}
+            hoverable={true}
         >
             {
                 <Carousel
@@ -37,7 +38,7 @@ function StayCard(props) {
                 >
                     {item.images.map((image, index) => (
                         <div key={index}>
-                            <Image src={image.url} width="250px" height="170px" />
+                            <Image src={image.url} width="330px" height="220px" />
                         </div>
                     ))}
                 </Carousel>
