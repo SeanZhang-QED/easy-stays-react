@@ -5,7 +5,8 @@ import { login } from "../utils"
 
 const wrapperStyle = {
   height: '400px',
-  width: '65%',
+  width: '50%',
+  minWidth: '1080px' ,
   margin: 'auto',
   borderRadius: '16px',
   position: 'relative'
@@ -71,7 +72,7 @@ class Login extends React.Component {
           </h1>
           <p>Enjoy your next adventure with unique stays, and more. Plan your trip today.</p>
         </div>
-        <Form ref={this.loginformRef} layout='vertical' style={{ width: '75%', margin: 'auto' }}>
+        <Form ref={this.loginformRef} layout='vertical' style={{ width: '70%', margin: 'auto'}}>
           <Form.Item
             name="username"
             label="Username"
@@ -105,7 +106,7 @@ class Login extends React.Component {
             disabled={this.state.loading}
             shape="round"
             type="primary"
-            style={{ width: "75%" }}
+            style={{ width: "70%" }}
           >
             <b>Log in</b>
           </Button>
@@ -175,7 +176,7 @@ function DefaultHomePage(props) {
         <div
           style={{
             ...innerLeftStyle,
-            width: '35%',
+            width: '33%',
             minWidth: '325px',
             background: 'linear-gradient(to right, orange, 75%, #ffca69)',
             borderRadius: '16px 0 0 16px',

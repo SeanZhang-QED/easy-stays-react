@@ -70,9 +70,9 @@ class App extends Component {
 
   render() {
     return (
-      <Layout style={{ height: "100vh" }}>
-        <Header style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ fontSize: 24, fontWeight: 700, color: "#FF385C" }}>
+      <Layout style={{ height: "100vh", backgroundColor:"white" }}>
+        <Header style={{ display: "flex", justifyContent: "space-around" }}>
+          <div style={{ fontSize: 24, fontWeight: 700, color: "#FF385C", marginLeft:'-25px' }}>
             Easy Stays - Easy Booking
           </div>
           {!this.state.authed && (

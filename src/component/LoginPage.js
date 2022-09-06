@@ -95,6 +95,7 @@ class LoginPage extends React.Component {
                     icon={<UserOutlined />}
                     type='primary'
                     onClick={this.handleBtnOnClick}
+                    style={{marginRight:'-30px'}}
                 >
                 </Button>
                 <Modal
